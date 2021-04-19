@@ -4,10 +4,10 @@ Author:中庸猿
 奋斗不止，赚钱不停    
 """
 from datetime import date
-
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QRadioButton, QCheckBox, QCommandLinkButton, QDialogButtonBox, \
-    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QFontComboBox, QDateEdit
+    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QFontComboBox, QDateEdit, QColorDialog, \
+    QDial, QSlider
 from PyQt5.QtWidgets import QLabel, QPushButton
 import sys
 
@@ -80,6 +80,21 @@ class MainWindow(QWidget):
         # 日期选择
         input9 = QDateEdit(date.today(), self)
         input9.move(300, 400)
+        # 选择颜色
+        input10 = QColorDialog(self)
+        input10.move(400, 400)
+        # input10.show()
+
+        input11 = QDial(self)
+        input11.move(300, 200)
+
+        input12 = QSlider(self)
+        input12.move(430, 350)
+        input12.setMaximum(100)
+        input12.setMinimum(-100)
+        input12.setValue(20)
+        input12.setOrientation(Qt.Horizontal) # 设置为水平方向
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
