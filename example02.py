@@ -3,8 +3,11 @@ Time:2021/4/19 10:21
 Author:中庸猿
 奋斗不止，赚钱不停    
 """
+from datetime import date
+
+from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QWidget, QRadioButton, QCheckBox, QCommandLinkButton, QDialogButtonBox, \
-    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QFontComboBox
+    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QFontComboBox, QDateEdit
 from PyQt5.QtWidgets import QLabel, QPushButton
 import sys
 
@@ -74,6 +77,9 @@ class MainWindow(QWidget):
         input8.setCurrentIndex(2)
         print(input8.currentText())
         label1.setFont(input8.currentFont())
+        # 日期选择
+        input9 = QDateEdit(date.today(), self)
+        input9.move(300, 400)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
