@@ -31,6 +31,10 @@ class MainWindow(QWidget):
         # 2.按钮
         btn1 = QPushButton('登录', self)
         btn1.move(50, 50)
+        # css语法：选择器{属性1：属性值1; 属性2：属性值2;..}
+        # color - 字体颜色，对应的值：颜色单词， rbg(255, 0, 0)
+        #
+        btn1.setStyleSheet('QPushButton{}')
         btn2 = QRadioButton('男', self)
         btn2.move(50, 100)
         btn3 = QCheckBox('篮球', self)
