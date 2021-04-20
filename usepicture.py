@@ -7,6 +7,15 @@ import sys
 
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PyQt5.QtWidgets import QWidget, QApplication, QLabel
+import requests as rq
+
+def download_image():
+    url = 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1015613717,2953594052&fm=26&gp=0.jpg'
+    response = rq.get(url)
+    if response.status_code == 200:
+        return response.content
+    print('False')
+    return 0
 
 
 class MainWindow(QWidget):
@@ -47,7 +56,18 @@ class MainWindow(QWidget):
         # 将显示图片的label进行缩放
         self.bg_label.setGeometry(0, 0, w_size.width(), w_size.height())
         self.bg_label.setPixmap(pix)
-
+        # 3.显示网络图片
+        # 下载图片
+        image_data = download_image()
+        # 使用网络图片数据创建图片对象
+        image = QImage.fromData(image_data)
+        # 对图片进行缩放
+        image = image.scaled(200, 200)
+        pix = QPixmap.fromImage(image)
+        # 显示图片
+        btn = QLabel(self)
+        btn.setGeometry(200, 100, 200, 200)
+        btn.setPixmap(pix)
 
 
 if __name__ == '__main__':
